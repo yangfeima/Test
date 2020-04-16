@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.nacos.consumer.mapper.OrderTabMapper" >
+    <!--新增订单-->
+    <update id="addOrderTab" parameterType="com.nacos.consumer.model.OrderTab">
+        insert into orderTab(orderId,status) values(#{orderId},#{status})
+    </update>
+
+    <!--查询订单-->
+   <!-- <select id="selectOrderTabByOrderId" parameterType="String" resultType="com.example.producer.model.OrderTab">
+        select * from orderTab where orderId = #{orderId}
+    </select>-->
+
+    <!--更改订单失败-->
+    <!-- <update id="updateFailOrderByOrderId" parameterType="String">
+         update orderTab set status = 2 where orderId = #{orderId}
+     </update>-->
+
+    <!--更改订单成功-->
+    <!--<update id="updateSuccessOrderByOrderId" parameterType="String">
+        update orderTab set status = 1 where orderId = #{orderId}
+    </update>-->
+</mapper>

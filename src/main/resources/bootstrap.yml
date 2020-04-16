@@ -1,0 +1,45 @@
+server:
+  port: 8083
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/seata2?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root
+  application:
+    name: nacos-consumer
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        #file-extension: properties 假如不配置，则nacos远程配置文件的后缀为.properties
+        file-extension: yaml
+        #prefix: nacos-config  #如果配置文件的名字和项目名一样，此处不需要指定此参数，否则需要指定此文件名称
+      discovery:
+        server-addr: 127.0.0.1:8848
+    sentinel:
+      transport:
+        dashboard: 127.0.0.1:8080
+      eager: true
+seata:
+  enabled: true
+  application-id: test
+  #事务组
+  tx-service-group: my_test_tx_group1
+  enable-auto-data-source-proxy: true
+  service:
+    vgroup-mapping: default
+    #配置Client连接TC的地址
+    grouplist: 127.0.0.1:8091
+  config:
+    type: file
+    file:
+      name: file.conf
+  registry:
+    type: file
+    file:
+      name: file.conf
+mybatis:
+  mapper-locations: classpath:mapper/*.xml  #注意：一定要对应mapper映射xml文件的所在路径
+  type-aliases-package: com.nacos.consumer.mapper  # 注意：对应实体类的路径
