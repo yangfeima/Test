@@ -69,9 +69,10 @@ public class TestController {
     @GetMapping("/order")
     @GlobalTransactional
     public String order() {
-        //
+        //本地调用修改数据库
         orderTabService.addOrderTab();
         System.out.println(RootContext.getXID());
+        //调用生产者
         testService.order();
         return "success";
     }
