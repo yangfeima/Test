@@ -37,7 +37,7 @@ public class TestController {
     /**
      * <方法描述>
      *
-     * @param  []
+     * @param
      * @return java.lang.String
      * @title  test1
      * @tables <涉及表说明，便于调用方调试>
@@ -57,7 +57,7 @@ public class TestController {
     /**
      * nacos分布式事务
      *
-     * @param  []
+     * @param
      * @return java.lang.String
      * @title  order
      * @tables <涉及表说明，便于调用方调试>
@@ -69,6 +69,7 @@ public class TestController {
     @GetMapping("/order")
     @GlobalTransactional
     public String order() {
+        //
         orderTabService.addOrderTab();
         System.out.println(RootContext.getXID());
         testService.order();

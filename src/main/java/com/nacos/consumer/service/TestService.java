@@ -18,7 +18,7 @@ public interface TestService {
     /**
      * 调用生产者方法
      *
-     * @param  []
+     * @param
      * @return java.lang.String
      * @title  order
      * @tables <涉及表说明，便于调用方调试>

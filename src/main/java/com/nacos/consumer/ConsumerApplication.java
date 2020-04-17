@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 /**
  * 启动类
  *
- * @param  []
+ * @param
  * @return java.lang.String
  * @title  ConsumerApplication
  * @tables <涉及表说明，便于调用方调试>
