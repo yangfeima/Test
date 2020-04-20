@@ -1,11 +1,7 @@
 package com.nacos.consumer.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
-import com.nacos.consumer.model.OrderTab;
 import com.nacos.consumer.service.OrderTabService;
-import com.nacos.consumer.service.TestService;
-import io.seata.core.context.RootContext;
-import io.seata.spring.annotation.GlobalTransactional;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
