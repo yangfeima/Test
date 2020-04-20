@@ -3,7 +3,7 @@
 <mapper namespace="com.nacos.consumer.mapper.OrderTabMapper" >
     <!--新增订单-->
     <update id="addOrderTab" parameterType="com.nacos.consumer.model.OrderTab">
-        insert into orderTab(orderId,status) values(#{orderId},#{status})
+        insert into order_tab(order_id,status) values(#{orderId},#{status})
     </update>
 
     <!--查询订单-->

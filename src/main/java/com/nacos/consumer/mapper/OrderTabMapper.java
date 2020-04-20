@@ -5,31 +5,22 @@ import com.nacos.consumer.model.OrderTab;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * <一句话说明功能>
- * <功能详细描述>
+ * 订单类Mapper
  *
  * @author HX0011159
- * @title OrderTabMapper
- * @date 2020/4/16
+ * @date 2020/4/20
  * @since <版本号>
  */
 @Mapper
 public interface OrderTabMapper {
 
-	/**
-	 * <方法描述>
-	 *
-	 * @param
-	 * @return void
-	 * @title  addOrderTab
-	 * @tables <涉及表说明，便于调用方调试>
-	 * @special <特殊说明>
-	 * @author HX0011159
-	 * @date 2020/4/16
-	 * @since <版本号>
-	 */
-	 public void addOrderTab(OrderTab order);
-
-
-
+	  /**
+	   * 添加订单
+	   * @author  HX0011159
+	   * @description  
+	   * @param  order OrderTab对象
+	   * @return  void
+	   * @date  2020/4/20
+	   */
+	  void addOrderTab(OrderTab order);
 }

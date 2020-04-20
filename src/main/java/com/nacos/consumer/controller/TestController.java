@@ -1,79 +1,65 @@
 package com.nacos.consumer.controller;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.nacos.consumer.model.OrderTab;
 import com.nacos.consumer.service.OrderTabService;
 import com.nacos.consumer.service.TestService;
 import io.seata.core.context.RootContext;
 import io.seata.spring.annotation.GlobalTransactional;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import javax.annotation.Resource;
 
 /**
- * 订单访问类
- * <功能详细描述>
+ * 订单类
  *
  * @author HX0011159
- * @title TestController
- * @date 2020/4/16
+ * @date 2020/4/20
  * @since <版本号>
  */
 @Slf4j
 @RestController
 @RefreshScope
+@Api(value = "订单类")
 public class TestController {
-    @Autowired
+    @Resource
     private RestTemplate restTemplate;
 
-    @Autowired
+    @Resource
     private OrderTabService orderTabService;
 
-    @Autowired
-    private TestService testService;
-
     /**
-     * <方法描述>
-     *
-     * @param
-     * @return java.lang.String
-     * @title  test1
-     * @tables <涉及表说明，便于调用方调试>
-     * @special <特殊说明>
-     * @author HX0011159
-     * @date 2020/4/16
-     * @since <版本号>
+     *　测试调用生产者接口
+     * @author  HX0011159
+     * @description  测试调用生产者接口
+     * @return  java.lang.String
+     * @date  2020/4/20
      */
     @SentinelResource("test1")
     @GetMapping("/test1")
+    @ApiOperation(value = "调用生产者接口",notes = "调用生产者接口")
     public String test1() {
-        String url = "http://nacos-provider/order";
-        String str =  restTemplate.getForObject(url, String.class);
+        String url = "http://nacos-provider/findAllOrder";
+        restTemplate.getForObject(url, String.class);
         return "success";
     }
 
     /**
-     * nacos分布式事务
-     *
-     * @param
-     * @return java.lang.String
-     * @title  order
-     * @tables <涉及表说明，便于调用方调试>
-     * @special <特殊说明>
-     * @author HX0011159
-     * @date 2020/4/16
-     * @since <版本号>
+     *　分布式事务调用测试
+     * @author  HX0011159
+     * @description  分布式事务调用测试
+     * @return  java.lang.String
+     * @date  2020/4/20
      */
     @GetMapping("/order")
-    @GlobalTransactional
+    @ApiOperation(value = "分布式事务操作",notes = "分布式事务操作")
     public String order() {
-        //本地调用修改数据库
         orderTabService.addOrderTab();
-        System.out.println(RootContext.getXID());
-        //调用生产者
-        testService.order();
         return "success";
     }
 }

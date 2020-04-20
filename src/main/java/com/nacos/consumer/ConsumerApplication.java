@@ -12,13 +12,8 @@ import org.springframework.web.client.RestTemplate;
 /**
  * 启动类
  *
- * @param
- * @return java.lang.String
- * @title  ConsumerApplication
- * @tables <涉及表说明，便于调用方调试>
- * @special <特殊说明>
  * @author HX0011159
- * @date 2020/4/16
+ * @date 2020/4/20
  * @since <版本号>
  */
 @SpringBootApplication
@@ -31,6 +26,13 @@ public class ConsumerApplication {
         SpringApplication.run(ConsumerApplication.class, args);
     }
 
+    /**
+     * 配置restTemplate
+     * @author  HX0011159
+     * @description  
+     * @return  org.springframework.web.client.RestTemplate
+     * @date  2020/4/20
+     */
     @LoadBalanced
     @Bean
     public RestTemplate restTemplate() {
