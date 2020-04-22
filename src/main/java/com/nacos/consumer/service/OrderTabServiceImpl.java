@@ -5,6 +5,7 @@ import com.nacos.consumer.model.OrderTab;
 import io.seata.core.context.RootContext;
 import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.stereotype.Service;
+
 import javax.annotation.Resource;
 
 /**
@@ -31,12 +32,12 @@ public class OrderTabServiceImpl implements OrderTabService {
      */
     @Override
     @GlobalTransactional
-    public void addOrderTab(){
+    public void insertOrderTab(){
         String orderId = System.currentTimeMillis() + "";
         OrderTab order = new OrderTab();
         order.setOrderId(orderId);
         order.setStatus(1);
-        orderTabMapper.addOrderTab(order);
+        orderTabMapper.insert(order);
 
         System.out.println(RootContext.getXID());
         // 调用生产者
@@ -44,6 +45,6 @@ public class OrderTabServiceImpl implements OrderTabService {
         OrderTab orderPro = new OrderTab();
         orderPro.setOrderId(orderIdPro);
         orderPro.setStatus(1);
-        testService.addOrder(order);
+        testService.insertOrder(order);
     }
 }

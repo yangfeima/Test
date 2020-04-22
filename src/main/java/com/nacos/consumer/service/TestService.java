@@ -22,6 +22,6 @@ public interface TestService {
      * @return  java.lang.String
      * @date  2020/4/20
      */
-    @GetMapping("/addOrder")
-    void addOrder(OrderTab orderTab);
+    @GetMapping("/insertOrder")
+    void insertOrder(OrderTab orderTab);
 }

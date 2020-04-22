@@ -57,7 +57,7 @@ public class TestController {
     @GetMapping("/order")
     @ApiOperation(value = "分布式事务操作",notes = "分布式事务操作")
     public String order() {
-        orderTabService.addOrderTab();
+        orderTabService.insertOrderTab();
         return "success";
     }
 }

@@ -16,5 +16,5 @@ public interface OrderTabService {
       * @return  void
       * @date  2020/4/20
       */
-     void addOrderTab();
+     void insertOrderTab();
 }
