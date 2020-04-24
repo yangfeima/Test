@@ -28,10 +28,11 @@ public class ConsumerApplication {
 
     /**
      * 配置restTemplate
-     * @author  HX0011159
-     * @description  
-     * @return  org.springframework.web.client.RestTemplate
-     * @date  2020/4/20
+     *
+     * @return org.springframework.web.client.RestTemplate
+     * @author HX0011159
+     * @description
+     * @date 2020/4/20
      */
     @LoadBalanced
     @Bean

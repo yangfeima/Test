@@ -9,8 +9,9 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import com.nacos.consumer.service.TestService;
 import javax.annotation.Resource;
-
+import com.nacos.consumer.model.OrderTab;
 /**
  * 订单类
  *
@@ -29,18 +30,20 @@ public class TestController {
     @Resource
     private OrderTabService orderTabService;
 
-
+    @Resource
+    private TestService testService;
 
     /**
-     *　测试调用生产者接口
-     * @author  HX0011159
-     * @description  测试调用生产者接口
-     * @return  java.lang.String
-     * @date  2020/4/20
+     * 　测试调用生产者接口
+     *
+     * @return java.lang.String
+     * @author HX0011159
+     * @description 测试调用生产者接口
+     * @date 2020/4/20
      */
     @SentinelResource("test1")
     @GetMapping("/test1")
-    @ApiOperation(value = "调用生产者接口",notes = "调用生产者接口")
+    @ApiOperation(value = "调用生产者接口", notes = "调用生产者接口")
     public String test1() {
         String url = "http://nacos-provider/findAllOrder";
         restTemplate.getForObject(url, String.class);
@@ -48,16 +51,21 @@ public class TestController {
     }
 
     /**
-     *　分布式事务调用测试
-     * @author  HX0011159
-     * @description  分布式事务调用测试
-     * @return  java.lang.String
-     * @date  2020/4/20
+     * 　分布式事务调用测试
+     *
+     * @return java.lang.String
+     * @author HX0011159
+     * @description 分布式事务调用测试
+     * @date 2020/4/20
      */
     @GetMapping("/order")
-    @ApiOperation(value = "分布式事务操作",notes = "分布式事务操作")
+    @ApiOperation(value = "分布式事务操作", notes = "分布式事务操作")
     public String order() {
-        orderTabService.insertOrderTab();
+        OrderTab orderPro = new OrderTab();
+        orderPro.setOrderId(orderIdPro);
+        orderPro.setStatus(1);
+        testService.insertOrder(OrderTab);
+        //orderTabService.insertOrderTab();
         return "success";
     }
 }

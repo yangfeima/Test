@@ -23,16 +23,18 @@ public class OrderTabServiceImpl implements OrderTabService {
 
     @Resource
     private TestService testService;
+
     /**
      * 添加订单实现
-     * @author  HX0011159
-     * @description  添加订单实现
-     * @return  void
-     * @date  2020/4/20
+     *
+     * @return void
+     * @author HX0011159
+     * @description 添加订单实现
+     * @date 2020/4/20
      */
     @Override
     @GlobalTransactional
-    public void insertOrderTab(){
+    public void insertOrderTab() {
         String orderId = System.currentTimeMillis() + "";
         OrderTab order = new OrderTab();
         order.setOrderId(orderId);
